@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import carrito from '../img/carrito.png'
 import styled from 'styled-components'
 
-export default function CartWidget() {
+export default function CartWidget({ itemsOnCart }) {
+
   return (
     <CartContainer>
       <img className='carrito' src={carrito} alt="carrito" />
-      <p>5</p>
+      <p>{itemsOnCart}</p>
 
     </CartContainer>
   )

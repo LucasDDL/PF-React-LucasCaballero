@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Logo from '../img/descarga.webp'
 import CartWidget from './CartWidget'
 
-export default function Navbar(props) {
-    return (
+export default function Navbar({ itemsOnCart }) {
 
+
+
+    return (
         <NavContainer>
             <img src={Logo} alt="Logo de Mercria 13" />
             <div>
@@ -14,7 +16,7 @@ export default function Navbar(props) {
                 <a href="">Material Escolar</a>
                 <a href="">Juguetes</a>
             </div>
-            <CartWidget />
+            <CartWidget itemsOnCart={itemsOnCart} />
         </NavContainer>
 
     )
