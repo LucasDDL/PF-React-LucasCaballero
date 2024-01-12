@@ -2,21 +2,23 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import Logo from '../img/descarga.webp'
 import CartWidget from './CartWidget'
+import { Link, NavLink } from 'react-router-dom'
 
-export default function Navbar({ itemsOnCart }) {
+export default function Navbar() {
 
 
 
     return (
         <NavContainer>
-            <img src={Logo} alt="Logo de Mercria 13" />
+            <Link to={'/'}>
+                <img src={Logo} alt="Logo de Mercria 13" />
+            </Link>
             <div>
-                <a href="">Bazar</a>
-                <a href="">Ropa</a>
-                <a href="">Material Escolar</a>
-                <a href="">Juguetes</a>
+                <NavLink to={'/category/Guitarras'} >Guitarras</NavLink>
+                <NavLink to={'/category/Baterias'} >Baterias</NavLink>
+                <NavLink to={'/category/Bajos'} >Bajos</NavLink>
             </div>
-            <CartWidget itemsOnCart={itemsOnCart} />
+            <CartWidget />
         </NavContainer>
 
     )
@@ -26,7 +28,8 @@ const NavContainer = styled.nav`
 box-sizing: border-box;
 padding: 20px;
 font-weight: bold;
-background-color:  #c4043c;
+background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 24%, rgba(255,0,0,1) 81%, rgba(251,214,68,1) 93%);
 display: flex;
 align-items: center;
 justify-content: space-between;
@@ -46,9 +49,11 @@ div {
     
     a {
             text-decoration: none;
-            color: white;
+            color: #dbc270;
+            background-color:   #5e04c4af;
             font-weight: bolder;
             font-size: 30px;
+            border: solid;
             cursor: pointer;
             &:hover {
                 color: #5e04c4af;

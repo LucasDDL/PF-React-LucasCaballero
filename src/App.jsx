@@ -1,24 +1,25 @@
-import { useState } from 'react'
+
 import './App.css'
-import ItemCount from './components/ItemCount'
 import ItemListContainer from './components/ItemListContainer'
 import Navbar from './components/Navbar'
+import ItemDetailContainer from './components/ItemDetailContainer'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 
 
 function App() {
-  const [itemsOnCart, setItemsOnCart] = useState(0);
 
-  const handleAdd = (count) => {
-    setItemsOnCart(itemsOnCart + count);
-
-  }
 
   return (
     <>
-      <Navbar itemsOnCart={itemsOnCart} />
-      <ItemListContainer greeting={'Bienvenidos a Merceria 13'} />
-      <ItemCount initial={1} stock={10} onAdd={handleAdd} />
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<ItemListContainer />} />
+          <Route path='/category/:categoryId' element={<ItemListContainer />} />
+          <Route path='/item/:itemId' element={<ItemDetailContainer />} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
