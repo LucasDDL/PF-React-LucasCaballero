@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { getProductById } from '../asyncMock'
-import ItemDetail from './Itemdetail'
+import ItemDetail from './ItemDetail';
 import { useParams } from 'react-router-dom'
 
 

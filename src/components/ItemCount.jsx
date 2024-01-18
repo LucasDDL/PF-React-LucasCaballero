@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 
 
-export default function ItemCount({ initial, stock }) {
+export default function ItemCount({ initial, stock, onAdd }) {
 
     const [count, setCount] = useState(initial);
 
@@ -31,7 +31,7 @@ export default function ItemCount({ initial, stock }) {
                 <Button onClick={decrement}>-</Button>
             </div>
             <div>
-                <Button disabled={!stock}>
+                <Button disabled={!stock} onClick={onAdd}>
                     Agregar al carrito
                 </Button>
             </div>

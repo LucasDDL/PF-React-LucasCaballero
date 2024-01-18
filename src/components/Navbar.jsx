@@ -10,8 +10,9 @@ export default function Navbar() {
 
     return (
         <NavContainer>
-            <Link to={'/'}>
-                <img src={Logo} alt="Logo de Mercria 13" />
+            <Link className='logo' to={'/'}>
+                <h1>BOKITA</h1>
+                <h1>STORE</h1>
             </Link>
             <div>
                 <NavLink to={'/category/Guitarras'} >Guitarras</NavLink>
@@ -35,9 +36,11 @@ align-items: center;
 justify-content: space-between;
 width: 100vw;
 
-img {
+.logo {
     width: 100px;
     cursor: pointer;
+    text-decoration: none;
+    color: #dbc270;
 }
 div {
     

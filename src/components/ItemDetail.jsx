@@ -2,9 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 import { useState } from 'react';
 import ItemCount from './ItemCount';
+import { Link } from 'react-router-dom';
 export default function ItemDetail({ id, name, price, category, img, stock, description }) {
 
+    const [quantityAdded, setQuantityAdded] = useState(0)
 
+    const handleOnAdd = (quantity) => {
+        setQuantityAdded(quantity)
+    }
 
     return (
         <ItemDetailArticle >
@@ -26,7 +31,13 @@ export default function ItemDetail({ id, name, price, category, img, stock, desc
                 </p>
             </section>
             <footer>
-                <ItemCount initial={1} stock={10} />
+                {
+                    quantityAdded > 0 ? (
+                        <Link to={'/cart'}>Terminar compra</Link>
+                    ) : (
+                        <ItemCount initial={1} stock={stock} onAdd={handleOnAdd} />
+                    )
+                }
             </footer>
         </ItemDetailArticle>
     )
