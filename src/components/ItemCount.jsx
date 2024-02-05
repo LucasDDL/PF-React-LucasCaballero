@@ -22,7 +22,6 @@ export default function ItemCount({ initial, stock, onAdd }) {
     }
 
 
-
     return (
         <ItemCountDiv>
             <div className='controls'>
@@ -31,7 +30,7 @@ export default function ItemCount({ initial, stock, onAdd }) {
                 <Button onClick={decrement}>-</Button>
             </div>
             <div>
-                <Button disabled={!stock} onClick={onAdd}>
+                <Button disabled={!stock} onClick={() => onAdd(count)}>
                     Agregar al carrito
                 </Button>
             </div>

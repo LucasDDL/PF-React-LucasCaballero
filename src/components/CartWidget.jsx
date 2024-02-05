@@ -1,13 +1,21 @@
-import React, { useState } from 'react'
+import React from 'react'
 import carrito from '../img/carrito.png'
 import styled from 'styled-components'
+import { useCart } from '../context/CartContext'
+import { useNavigate } from 'react-router-dom'
 
 export default function CartWidget() {
+  const { totalQuantity } = useCart()
+  const navigate = useNavigate()
+
+  const handleClick = () => {
+    navigate('/cart')
+  }
 
   return (
-    <CartContainer>
+    <CartContainer onClick={handleClick}>
       <img className='carrito' src={carrito} alt="carrito" />
-      <p>5</p>
+      <p>{totalQuantity}</p>
 
     </CartContainer>
   )

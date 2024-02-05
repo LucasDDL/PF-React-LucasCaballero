@@ -1,23 +1,39 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { getProductById } from '../asyncMock'
+
 import ItemDetail from './ItemDetail';
 import { useParams } from 'react-router-dom'
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../services/firebase/firebaseConfig';
 
 
 export default function ItemDetailContainer() {
     const [product, setProduct] = useState(null)
     const { itemId } = useParams()
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        getProductById(itemId)
-            .then(response => {
-                setProduct(response)
+        const productDocument = doc(db, 'products', itemId);
+
+        getDoc(productDocument)
+            .then(queryDocumentSnapshot => {
+
+                const fileds = queryDocumentSnapshot.data()
+                const queryProduct = { id: queryDocumentSnapshot.id, ...fileds }
+                setProduct(queryProduct)
             })
             .catch(error => {
-                console.error(error)
+                showNotification('error', 'hubo un error')
             })
+            .finally(setLoading(false))
+
     }, [itemId])
+
+    if (loading) {
+        return (
+            <h1>La página está cargando</h1>
+        )
+    }
 
     return (
         <ItemDetailContainerDiv>

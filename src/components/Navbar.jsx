@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import Logo from '../img/descarga.webp'
 import CartWidget from './CartWidget'
 import { Link, NavLink } from 'react-router-dom'
 
@@ -46,7 +45,7 @@ div {
     
     display: flex;
     flex: 1;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin: 0 55px;
     
